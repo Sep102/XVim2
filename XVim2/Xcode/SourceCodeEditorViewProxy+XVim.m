@@ -1115,12 +1115,19 @@
         XVimOptions* options = [[XVim instance] options];
         NSColor* highlightColor = options.highlight[@"Search"][@"guibg"];
         // Add highlight
-        NSTextView* textView = (NSTextView *)self.sourceCodeEditorView.hostingEditor.textView;
+        SourceCodeEditorView *scev = self.sourceCodeEditorView;
+        _TtC22IDEPegasusSourceEditor16SourceCodeEditor * he = scev.hostingEditor;
+        NSView *tv = he.textView;
+        SourceEditorView *sev = (SourceEditorView *)tv;
+
+
+#if 0
         for (NSTextCheckingResult* result in self.foundRanges) {
             [textView.layoutManager addTemporaryAttribute:NSBackgroundColorAttributeName
                                                     value:highlightColor
                                         forCharacterRange:result.range];
         }
+#endif
 
         [self setNeedsUpdateFoundRanges:NO];
     }

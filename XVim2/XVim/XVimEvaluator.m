@@ -238,6 +238,8 @@ static XVimEvaluator* _popEvaluator = nil;
                     BOOL forward = [command characterAtIndex:0] == '/';
                     XVimMotion* m =
                                 [XVim.instance.searcher motionForSearch:[command substringFromIndex:1] forward:forward];
+
+                    [self.sourceView xvim_updateFoundRanges:m.regex withOption:m.option];
                     if ([command characterAtIndex:0] == '/') {
                         [self.sourceView xvim_highlightNextSearchCandidateForward:m.regex
                                                                             count:self.numericArg
