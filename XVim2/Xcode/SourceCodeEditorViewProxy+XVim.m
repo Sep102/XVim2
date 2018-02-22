@@ -1112,16 +1112,15 @@
         // Clear current highlight.
         [self xvim_clearHighlightText];
 
-#ifdef TODO
         XVimOptions* options = [[XVim instance] options];
         NSColor* highlightColor = options.highlight[@"Search"][@"guibg"];
         // Add highlight
+        NSTextView* textView = (NSTextView *)self.sourceCodeEditorView.hostingEditor.textView;
         for (NSTextCheckingResult* result in self.foundRanges) {
-            [self.layoutManager addTemporaryAttribute:NSBackgroundColorAttributeName
-                                                value:highlightColor
-                                    forCharacterRange:result.range];
+            [textView.layoutManager addTemporaryAttribute:NSBackgroundColorAttributeName
+                                                    value:highlightColor
+                                        forCharacterRange:result.range];
         }
-#endif
 
         [self setNeedsUpdateFoundRanges:NO];
     }

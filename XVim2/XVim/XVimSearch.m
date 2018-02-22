@@ -131,11 +131,14 @@
         self.lastSearchCmd = [searchCmd substringFromIndex:1];
     }
     NSRange r = [self searchNextFrom:from inWindow:window];
-    /*
+
     if( [XVim instance].options.hlsearch ){
-        [self highlightTextInView:window.sourceView];
+        MOTION_OPTION opts = [self motionForSearch:searchCmd forward:!self.lastSearchBackword];
+
+        _auto srcView = [window sourceView];
+        [srcView xvim_updateFoundRanges:searchCmd withOption:opts];
     }
-     */
+
     return r;
 }
 

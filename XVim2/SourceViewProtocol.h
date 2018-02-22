@@ -109,6 +109,7 @@ typedef NS_ENUM(char, CursorStyle) { CursorStyleVerticalBar, CursorStyleBlock, C
                                       forward:(BOOL)forward;
 - (void)xvim_highlightNextSearchCandidateForward:(NSString*)regex count:(NSUInteger)count option:(MOTION_OPTION)opt;
 - (void)xvim_highlightNextSearchCandidateBackward:(NSString*)regex count:(NSUInteger)count option:(MOTION_OPTION)opt;
+- (void)xvim_updateFoundRanges : (NSString*)pattern withOption : (MOTION_OPTION)opt;
 - (void)xvim_hideCompletions;
 @end
 
