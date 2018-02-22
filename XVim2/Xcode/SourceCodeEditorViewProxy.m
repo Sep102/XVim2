@@ -97,7 +97,11 @@
 }
 - (NSInteger)linesPerPage { return self.sourceCodeEditorView.linesPerPage; }
 - (NSInteger)lineCount { return self.sourceCodeEditorView.lineCount; }
-- (void)scrollRangeToVisible:(NSRange)arg1 { [self.sourceCodeEditorView scrollRangeToVisible:arg1]; }
+- (void)scrollRangeToVisible:(NSRange)arg1
+{
+    CGRect frame = [self.sourceCodeEditorView frameContainingTextRange:arg1];
+    [self.sourceCodeEditorView scrollRectToVisible:frame];
+}
 
 - (void)setCursorStyle:(CursorStyle)cursorStyle { self.sourceCodeEditorViewWrapper.cursorStyle = cursorStyle; }
 
