@@ -30,6 +30,12 @@ Since Apple no longer loads 3rd party plugins (in Xcode 8 and above), we have to
          $ sudo codesign -f -s XcodeSigner /Applications/Xcode.app    (Replace the Xcode path if it is different.)
 
    This should take a while.
+
+   Signing Xcode does not re-sign the xcodebuild utility so you may also want to re-sign it to prevent spurious errors when running xcodebuild.
+   In a terminal,
+
+         $ sudo codesign -f -s XcodeSigner /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild    (Replace the Xcode path if it is different.)
+
    
 4. Build XVim
 
